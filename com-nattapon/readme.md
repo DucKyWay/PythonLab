@@ -1,0 +1,1 @@
+## Exersice This Directory form http://www.nattapon.com/2019/11/python-coding-core-trainer/ 
