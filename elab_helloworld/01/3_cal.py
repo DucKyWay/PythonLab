@@ -1,0 +1,8 @@
+A = int(input())
+B = int(input())
+print(f"A + B = {A + B:.2f}")
+print(f"A - B = {A - B:.2f}")
+print(f"A x B = {A * B:.2f}")
+print(f"A / B = {A / B:.2f}")
+print(f"A ^ B = {pow(A, B):.2f}")
+print(f"A % B = {A % B:.2f}")
