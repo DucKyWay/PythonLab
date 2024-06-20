@@ -18,22 +18,23 @@ def start():
         card = input()
         player_cards[i] = list(card.split(" "))
         sorted_cards[i] = sorted(player_cards[i], key=sorted_card)
-    start_game = input()
-    return start_game
 
 def gameplay(start_game):
+    turn = start_game
     while True:
         for i in range(4):
-            print(i)
             print(f"Player {i+1} place turn card to match 6R in both number and color")
+            print(f"Now the current card is {turn}...")
         break
     
 
 def main():
     start()
+    start_game = input()
+
     gameplay(start_game)
 
-    print(player_cards)
-    print(sorted_cards)
+    print(f"start: {player_cards}")
+    print(f"sort: {sorted_cards}")
 
 main()
