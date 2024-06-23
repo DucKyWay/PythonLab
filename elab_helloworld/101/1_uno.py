@@ -24,9 +24,6 @@ def sorted_card(card):
     num, color = card[0], card[1]
     return (color_priority[color], number_priority[num])
 
-def card_check(current_card, cards):
-    print(current_card, cards)
-
 def start():
     for i in range(4):
         card = input()
@@ -35,17 +32,42 @@ def start():
 
 def gameplay(start_game):
     turn = start_game
-    while True:
-        for i in range(4):
-            # if card_check(sorted_cards[i]) == "both number and color":
-            #     turn = card_check
-            # elif card_check(sorted_cards[i]) == "both number":
-            # elif card_check(sorted_cards[i]) == "color":
-            card_check(turn, sorted_cards[i])
-            print(f"Player {i+1} place turn card to match 6R in both number and color")
-            print(f"Now the current card is {turn}...")
-        break
+    player_in = 0
     
+    while True:
+        played = False
+        current_player_cards = sorted_cards[player_in]
+
+        for i in range(len(current_player_cards)):
+            s_card_get = current_player_cards[i]
+            
+            if s_card_get == turn: 
+                print(f"Player {player_in+1} place {s_card_get} card to match {turn} in both number and color")
+                turn = s_card_get
+                current_player_cards.pop(i)
+                played = True
+                break
+            elif s_card_get[0] == turn[0]: 
+                print(f"Player {player_in+1} place {s_card_get} card to match {turn} in both number")
+                turn = s_card_get
+                current_player_cards.pop(i)
+                played = True
+                break
+            elif s_card_get[1] == turn[1]: 
+                print(f"Player {player_in+1} place {s_card_get} card to match {turn} in color")
+                turn = s_card_get
+                current_player_cards.pop(i)
+                played = True
+                break
+        
+        if played:
+            print(f"Now the current card is {turn}...")
+        else:
+            break
+        
+        player_in = (player_in + 1) % 4  
+    
+    return turn
 
 def main():
     start()
